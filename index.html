@@ -6,6 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rubik's Cube Timer</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply saved theme immediately (before paint) to avoid a flash of default colors
+    (function(){
+      try{
+        var vars = JSON.parse(localStorage.getItem('cubetimer-theme-vars'));
+        if(vars){
+          var root = document.documentElement.style;
+          Object.keys(vars).forEach(function(k){ root.setProperty(k, vars[k]); });
+        }
+      }catch(e){}
+    })();
+  </script>
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-828S47SYPM"></script>
 <script>
@@ -43,6 +55,7 @@
           <div class="stat-lbl">Ao12</div>
         </div>
       </div>
+      <a class="themes-link" href="themes.html" title="Choose a theme">🎨 Themes</a>
       <button class="upgrade-btn" id="upgradeBtn">✦ Upgrade to Pro</button>
     </header>
 
